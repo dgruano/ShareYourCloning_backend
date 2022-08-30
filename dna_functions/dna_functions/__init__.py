@@ -5,7 +5,7 @@ from Bio.Seq import reverse_complement
 from pydna.dseqrecord import Dseqrecord
 from pydna.dseq import Dseq
 from pydantic_models import PCRSource, PrimerModel, RepositoryIdSource, RestrictionEnzymeDigestionSource,\
-    GenbankSequence, SequenceEntity, StickyLigationSource
+    GenbankSequence, SequenceEntity, StickyLigationSource, EnsemblSequence
 from pydna.parsers import parse as pydna_parse
 from itertools import permutations, product
 from pydna.primer import Primer
@@ -303,3 +303,5 @@ def correct_name(dseq: Dseqrecord):
     # Can set the name from keyword if locus is set to Exported
     if dseq.name.lower() == 'exported' and dseq.locus.lower() == 'exported' and 'keywords' in dseq.annotations:
         dseq.name = dseq.annotations['keywords'][0]
+
+def request_from_ensembl():

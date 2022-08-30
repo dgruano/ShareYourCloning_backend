@@ -9,6 +9,7 @@ from pydantic.types import conlist
 # Enumerations:
 
 class SourceType(str, Enum):
+    ensembl = 'ensembl',
     repository_id = 'repository_id',
     file = 'file',
     restriction = 'restriction'
@@ -110,6 +111,12 @@ class RepositoryIdSource(Source):
     repository: RepositoryName
     repository_id: str
     type: SourceType = SourceType('repository_id')
+
+
+class EnsemblSource(Source):
+    """Documents a request to Ensembl genomes
+    """
+    type: SourceType = SourceType('ensembl')
 
 
 # TODO There is some abstract common thing between restriction and PCR, since
